@@ -206,7 +206,7 @@
             echo "<article class='box box25 page_single hello_single' " . ($EvangelhodoDia ? "style='background:#f3f4cc'" : "") . ">";
             echo "<div class='box_content wc_normalize_height'>
                     <h4>{$ArrayDatas[$cont_id]}</h4
-                    <p id='to-copy'>{$Liturgia4}</p>
+                    <p>{$Liturgia4}</p>
                     <p><i><a href='{$LinksHome}' target='_blank'>{$LinksHome}</a></i></p>
                 </div>
                 <div class='page_single_action'>
@@ -216,17 +216,14 @@
 
 
             echo "<form action='Post.php' method='POST'>";
-
-
+            
+            
             $htmlForm = "<input type='hidden' name='e_id' value='{$DataEvangelho[1]}{$DataEvangelho[4]}{$DataEvangelho[7]}'/>"
-                    . "<input type='hidden' name='e_title' value='{$DiaEvangelho[0]}, {$DataEvangelho[1]}/{$DataEvangelho[4]}/{$DataEvangelho[7]}'/>"
-                    . "<input type='hidden' name='e_content' value='{$LiturgiaLimpa}'/>"
-                    . "<input type='hidden' name='e_link' value='{$LinksHome}'/>";
-
+            . "<input type='hidden' name='e_title' value='{$DiaEvangelho[0]}, {$DataEvangelho[1]}/{$DataEvangelho[4]}/{$DataEvangelho[7]}'/>"
+            . "<input type='hidden' name='e_content' value='{$LiturgiaLimpa}'/>"
+            . "<input type='hidden' name='e_link' value='{$LinksHome}'/>";
+            
             echo $htmlForm;
-            ?>
-            <button onClick="CopyToClipboard('to-copy')">Copy</button>
-            <?php
             echo "<input class='button enviar' type='submit' name='SendFormContato' value='Enviar' />";
 
 
@@ -238,23 +235,4 @@
         $cont_id++;
     endforeach;
     ?>
-
-    <script>
-        function copyText() {
-            var outputText = "";
-            var targets = document.getElementsByClassName('copytext');
-            for (var i = 0; i < targets.length; i++) {
-                outputText += targets[i].innerText;
-            }
-            var output = document.getElementById('output');
-            output.innerText = outputText;
-            var range = document.createRange();
-            range.selectNodeContents(output);
-            var selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            document.execCommand('copy');
-            output.style.display = 'none';
-        }
-    </script>
 </div>
